@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h2>
-          Schedule a pool match!
+          Schedule a pool match! This is a QA Test
         </h2>
         <a
           className="App-link"
