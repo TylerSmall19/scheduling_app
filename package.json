@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reach/dialog": "^0.2.9",
+    "@reach/tabs": "^0.1.6",
+    "@reach/visually-hidden": "^0.1.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-netlify-identity": "^0.1.9",
+    "react-netlify-identity-widget": "^0.1.4",
     "react-scripts": "3.0.1"
   },
   "scripts": {
