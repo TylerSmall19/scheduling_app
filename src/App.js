@@ -9,10 +9,10 @@ function Login () {
   const identity = useIdentityContext()
   const [dialog, setDialog] = React.useState(false)
   const isLoggedIn = identity && identity.isLoggedIn
-
+  console.log(identity)
   return (
     <React.Fragment>
-      <button className="btn" onClick={() => setDialog(isLoggedIn)}>
+      <button className="btn" onClick={() => setDialog(true)}>
         {isLoggedIn ? "LOG OUT" : "LOG IN"}
       </button>
       <React.Suspense fallback="loading...">
@@ -23,7 +23,7 @@ function Login () {
 }
 
 function App() {
-  const url = 'https://www.tylerjsmall.com/.netlify/identity';
+  const url = 'https://www.tylerjsmall.com/';
   return (
     <IdentityContextProvider url={url}>
       <div className="App">
