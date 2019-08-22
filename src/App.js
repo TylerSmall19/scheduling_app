@@ -23,7 +23,7 @@ function Login () {
 }
 
 function App() {
-  const url = 'http://www.tylerjsmall.com/.netlify/identity';
+  const url = 'https://www.tylerjsmall.com/.netlify/identity';
   return (
     <IdentityContextProvider url={url}>
       <div className="App">
