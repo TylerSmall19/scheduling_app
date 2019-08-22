@@ -1,15 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { IdentityContextProvider, useIdentityContext } from 'react-netlify-identity';import "react-netlify-identity-widget/styles.css"
+import { IdentityContextProvider, useIdentityContext } from 'react-netlify-identity';
+import "react-netlify-identity-widget/styles.css";
 // Lazy load the module when login is attempted
-const IdentityModal = React.lazy(() => import("react-netlify-identity-widget"))
+const IdentityModal = React.lazy(() => import("react-netlify-identity-widget"));
 
 function Login () {
-  const identity = useIdentityContext()
-  const [dialog, setDialog] = React.useState(false)
-  const isLoggedIn = identity && identity.isLoggedIn
-  console.log(identity)
+  const identity = useIdentityContext();
+  const [dialog, setDialog] = React.useState(false);
+  const isLoggedIn = identity && identity.isLoggedIn;
+
   return (
     <React.Fragment>
       <button className="btn" onClick={() => setDialog(true)}>
@@ -23,7 +24,7 @@ function Login () {
 }
 
 function App() {
-  const url = 'https://www.tylerjsmall.com/';
+  const url = 'https://www.tylerjsmall.com';
   return (
     <IdentityContextProvider url={url}>
       <div className="App">
@@ -31,16 +32,11 @@ function App() {
           <Login />
           <img src={logo} className="App-logo" alt="logo" />
           <h2>
-            Schedule a pool match! This is a QA Test with Login
+            Schedule a pool match! This is a QA Test with Login.
           </h2>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            Learn React
-          </a>
+          <h3>
+            {window.location.hostname}
+          </h3>
         </header>
       </div>
     </IdentityContextProvider>
