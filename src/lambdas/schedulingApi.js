@@ -5,8 +5,9 @@ exports.handler = function (event, context, callback) {
 
   if (loggedIn) {
     console.log('Legally invoked!', JSON.stringify(context));
-    return JSON.stringify({ statusCode: 200, body: 'Welcome!' });
+    return callback(null, { statusCode: 200, body: 'Welcome!' });
   }
 
-  throw new Error();
+  console.log('This was invoked illegally');
+  return callback(Error('User not logged in'));
 }

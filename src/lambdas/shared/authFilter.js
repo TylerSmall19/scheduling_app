@@ -6,11 +6,8 @@ export const isLoggedIn = (event, context, callback) => {
 
   if (!claims) {
     console.log("User not logged in, or empty claims: ", claims);
-    callback(Error('User is not logged in'));
-    return;
+    return false;
   }
 
-  callback(null, {statusCode: 401, body: 'Message'});
-
-  return true;
+  return claims;
 }
