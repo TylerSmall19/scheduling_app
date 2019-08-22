@@ -30,6 +30,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Login />
+          <button onClick={() => {fetch('/.netlify/functions/schedulingApi').then(async data => {console.log(await data.json())})}}>Hit the API</button>
           <img src={logo} className="App-logo" alt="logo" />
           <h2>
             Schedule a pool match! This is a QA Test with Login.
