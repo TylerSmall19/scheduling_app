@@ -11,7 +11,7 @@
   publish = "build/"
 
   # Default build command.
-  command = "npx netlify-lambda build src/lambdas && npm run build"
+  command = "npm run build-lambdas && npm run build"
 
   # Directory with the serverless Lambda functions to deploy to AWS.
   functions = "functions/"
