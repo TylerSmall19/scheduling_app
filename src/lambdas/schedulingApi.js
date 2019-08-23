@@ -1,13 +1,13 @@
 import { isLoggedIn } from './shared/authFilter';
 
-exports.handler = function (event, context, callback) {
+exports.handler = async function (event, context, callback) {
   const loggedIn = isLoggedIn(event, context, callback);
 
   if (loggedIn) {
-    console.log('Legally invoked!', JSON.stringify(context));
-    return callback(null, { statusCode: 200, body: 'Welcome!' });
+    console.log('Logged in user quering scheduling API: ')
+    return { statusCode: 200, body: JSON.stringify({ msg: 'Welcome!' }) };
   }
 
   console.log('This was invoked illegally');
-  return callback(Error('User not logged in'));
+  throw Error('User not logged in');
 }
