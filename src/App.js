@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { IdentityContextProvider, useIdentityContext } from 'react-netlify-identity';
 import "react-netlify-identity-widget/styles.css";
+import { schedulingAPI } from './services/schedulingAPIService';
 // Lazy load the module when login is attempted
 const IdentityModal = React.lazy(() => import("react-netlify-identity-widget"));
 
@@ -23,6 +24,14 @@ function Login () {
   )
 }
 
+const HitAPI = () => {
+  const identity = useIdentityContext();
+
+  return (
+    <button onClick={async () => await new schedulingAPI(identity).getTeamSchedule('1')}>Hit the API</button>
+  );
+}
+
 function App() {
   const url = 'https://www.tylerjsmall.com';
   return (
@@ -30,7 +39,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Login />
-          <button onClick={() => {fetch('/.netlify/functions/schedulingApi').then(async data => {console.log(await data.json())})}}>Hit the API</button>
+          <HitAPI />
           <img src={logo} className="App-logo" alt="logo" />
           <h2>
             Schedule a pool match! This is a QA Test with Login.
