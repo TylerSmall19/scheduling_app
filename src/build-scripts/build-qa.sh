@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "API KEY LOOKUP: "
 echo $API_LOOKUP_KEY
 
