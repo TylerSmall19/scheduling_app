@@ -27,8 +27,14 @@ function Login () {
 const HitAPI = () => {
   const identity = useIdentityContext();
 
+  const onClickHandler = async () => {
+    const res = await new schedulingAPI(identity).getTeamSchedule('1');
+    console.log(res.key)
+    res.key && (document.getElementById('keyTarget').innerText = res.key || 'N/A')
+  }
+
   return (
-    <button onClick={async () => await new schedulingAPI(identity).getTeamSchedule('1')}>Hit the API</button>
+    <button onClick={onClickHandler}>Hit the API</button>
   );
 }
 
@@ -39,14 +45,20 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Login />
+          
           <HitAPI />
+          
           <img src={logo} className="App-logo" alt="logo" />
+          
           <h2>
             Schedule a pool match! This is a QA Test with Login.
           </h2>
+          
           <h3>
             {window.location.hostname}
           </h3>
+
+          <h3>API KEY: <span id='keyTarget'>n/a</span></h3>
         </header>
       </div>
     </IdentityContextProvider>
