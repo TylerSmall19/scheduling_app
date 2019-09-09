@@ -3,7 +3,6 @@ const root = '/.netlify/functions';
 const schedulingAPIRoutes = {
   root,
   teamSchedule: (teamID) => root + '/schedulingApi?teamID=' + teamID
-  // teamSchedule: (teamID) => root + '/teamSchedule?teamID=' + teamID
 }
 
 const authenticatedClient = (identity) => (url, options) =>
@@ -13,7 +12,7 @@ const authenticatedClient = (identity) => (url, options) =>
       'Accept': 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
       ...options.headers,
-      'Authorization': 'Bearer ' + identity.user.token.access_token,
+      'Authorization': 'Bearer ' + (identity.user && identity.user.token.access_token),
     },
     ...options
   });
