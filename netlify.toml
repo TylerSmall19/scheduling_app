@@ -11,7 +11,18 @@
   publish = "build/"
 
   # Default build command.
-  command = "npm run build-lambdas && npm run build"
+  command = "npm run lambdas:build && npm run build"
 
   # Directory with the serverless Lambda functions to deploy to AWS.
   functions = "functions/"
+
+[context.production]
+  environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_PROD" }
+
+[context.qa]
+  environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_QA" }
+  command = './src/build-scripts/build-qa.sh'
+
+# [dev]
+  # environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_DEV" }
+  # command = './src/build-scripts/build-dev.sh'
