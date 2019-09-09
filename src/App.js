@@ -38,7 +38,7 @@ const HitAPI = () => {
 }
 
 function App() {
-  const url = 'https://www.schedule.tylerjsmall.com';
+  const url = 'https://schedule.tylerjsmall.com/';
   return (
     <IdentityContextProvider url={url}>
       <div className="App">
