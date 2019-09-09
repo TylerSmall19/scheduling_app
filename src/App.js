@@ -28,7 +28,8 @@ const HitAPI = () => {
   const identity = useIdentityContext();
 
   const onClickHandler = async () => {
-    await new schedulingAPI(identity).getTeamSchedule('1');
+    const res = await new schedulingAPI(identity).getTeamSchedule('1');
+    console.log(res)
   }
 
   return (
