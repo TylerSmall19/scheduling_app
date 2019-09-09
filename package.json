@@ -6,6 +6,7 @@
     "@reach/dialog": "^0.2.9",
     "@reach/tabs": "^0.1.6",
     "@reach/visually-hidden": "^0.1.4",
+    "netlify-cli": "^2.13.1",
     "netlify-lambda": "^1.6.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -18,8 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build-lambdas": "npx netlify-lambda build src/lambdas",
-    "start-lambdas": "npx netlify-lambda serve src/lambdas"
+    "lambdas:build": "npx netlify-lambda build src/lambdas",
+    "lambdas:start": "npx netlify-lambda serve src/lambdas"
   },
   "eslintConfig": {
     "extends": "react-app"
