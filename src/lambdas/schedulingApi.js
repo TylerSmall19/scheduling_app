@@ -4,7 +4,7 @@ exports.handler = async function (event, context, callback) {
   const loggedIn = isLoggedIn(event, context, callback);
 
   if (loggedIn) {
-    return { statusCode: 200, body: JSON.stringify({ msg: 'Welcome!', key: process.env[process.env.API_LOOKUP_KEY] }) };
+    return { statusCode: 200, body: JSON.stringify({ msg: 'Welcome!'}) };
   }
 
   console.log('This was invoked illegally');
