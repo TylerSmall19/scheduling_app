@@ -21,7 +21,7 @@
 
 [context.qa]
   environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_QA" }
-  command = './src/build-scripts/build-qa.sh'
+  command = 'ls ./src/build-scripts/build-qa.sh && ./src/build-scripts/build-qa.sh'
 
 # [dev]
   # environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_DEV" }
