@@ -21,4 +21,4 @@
 
 [context.qa]
   environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_QA" }
-  command = './build-qa.sh'
+  command = 'chmod a+x ./build-qa.sh && ./build-qa.sh'
