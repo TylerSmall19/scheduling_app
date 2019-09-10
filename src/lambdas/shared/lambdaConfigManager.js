@@ -1,3 +1,3 @@
 export default {
-  schedulingApiKey: process.env[process.env.LOOKUP_API_KEY] || 'local'
+  schedulingApiKey: process.env[process.env.API_LOOKUP_KEY] || 'local'
 }
