@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
 import { IdentityContextProvider, useIdentityContext } from 'react-netlify-identity';
-import "react-netlify-identity-widget/styles.css";
+import 'react-netlify-identity-widget/styles.css';
 import { schedulingAPI } from './services/schedulingAPIService';
 // Lazy load the module when login is attempted
-const IdentityModal = React.lazy(() => import("react-netlify-identity-widget"));
+const IdentityModal = React.lazy(() => import('react-netlify-identity-widget'));
 
-function Login () {
+function Login() {
   const identity = useIdentityContext();
   const [dialog, setDialog] = React.useState(false);
   const isLoggedIn = identity && identity.isLoggedIn;
 
   return (
-    <React.Fragment>
-      <button className="btn" onClick={() => setDialog(true)}>
-        {isLoggedIn ? "LOG OUT" : "LOG IN"}
-      </button>
+    <div className='login-container col-2 col-xs-12 mx-auto float-right'>
+      <span className="login-btn" onClick={() => setDialog(true)}>
+        {isLoggedIn ? "LOG OUT" : "LOGIN"}
+      </span>
+
       <React.Suspense fallback="loading...">
         <IdentityModal showDialog={dialog} onCloseDialog={() => setDialog(false)} />
       </React.Suspense>
-    </React.Fragment>
+    </div>
   )
 }
 
@@ -33,7 +33,7 @@ const HitAPI = () => {
   }
 
   return (
-    <button onClick={onClickHandler}>Hit the API</button>
+    <button onClick={onClickHandler} className='btn-secondary'>Test</button>
   );
 }
 
@@ -42,23 +42,32 @@ function App() {
   return (
     <IdentityContextProvider url={url}>
       <div className="App">
-        <header className="App-header">
-          <Login />
-          
-          <HitAPI />
-          
-          <img src={logo} className="App-logo" alt="logo" />
-          
-          <h2>
-            Schedule a pool match! This is a QA Test with Login.
-          </h2>
-          
-          <h3>
-            {window.location.hostname}
-          </h3>
+        <div className='container'>
+          <div className='row background'>
+            <div className='col-12'>
+              <Login />
 
-          <h3>API KEY: <span id='keyTarget'>n/a</span></h3>
-        </header>
+              <br />
+
+              <h1>Schedule App</h1>
+
+              <br />
+
+              <HitAPI />
+
+              <br />
+              <br />
+
+              <h2>
+                Schedule a pool match! This is a QA Test with Login.
+              </h2>
+
+              <h3>
+                {window.location.hostname}
+              </h3>
+            </div>
+          </div>
+        </div>
       </div>
     </IdentityContextProvider>
   );
