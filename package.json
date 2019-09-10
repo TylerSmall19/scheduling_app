@@ -6,6 +6,7 @@
     "@reach/dialog": "^0.2.9",
     "@reach/tabs": "^0.1.6",
     "@reach/visually-hidden": "^0.1.4",
+    "aviator": "^0.6.6",
     "netlify-cli": "^2.13.1",
     "netlify-lambda": "^1.6.3",
     "react": "^16.8.6",
