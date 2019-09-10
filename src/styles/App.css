@@ -1,14 +1,14 @@
 /* COLOR SCHEME */
 /*
   BG: #F9FBFE
-  Text?: #09000F
-  #721817
-  #fa9f42
-  #bfdbf7
-  #73937e
-  #fc744e
+  Base text: #2A4C55
+  danger/errors: #721817
+  caution/warning: #fa9f42
+  header: #335C67
+  accent: #fc744e
+  optional: #bfdbf7
 
-  org: https://coolors.co/721817-fa9f42-bfdbf7-73937e-fc744e
+  org: https://coolors.co/721817-fa9f42-f9fbfe-335c67-fc744e
   alt: https://coolors.co/721817-fa9f42-444546-77b588-fc744e
 */
 
@@ -35,12 +35,12 @@
 }
 
 .login-btn {
-  color: #FA9F42;
+  color: #FC805E;
   font-weight: 500;
 }
 
 .login-btn:hover {
-  color: #FAA753;
+  color: #fc744e;
   font-weight: 700;
   cursor: pointer;
 }
