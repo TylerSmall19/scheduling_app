@@ -1,6 +1,5 @@
 /* COLOR SCHEME */
 /*
-  BG: #F9FBFE
   Base text: #2A4C55
   danger/errors: #721817
   caution/warning: #fa9f42
@@ -25,7 +24,7 @@
 }
 
 .container {
-  background: #F9FBFC;
+  /* background: #F9FBFC; */
   min-height: 650px;
   padding: 2%;
 }
@@ -35,7 +34,6 @@
 }
 
 .login-btn {
-  color: #FC805E;
   font-weight: 500;
 }
 
@@ -43,13 +41,4 @@
   color: #fc744e;
   font-weight: 700;
   cursor: pointer;
-}
-
-/* All but phone styles */
-@media (min-width: 576px) {
-  .container {
-    margin-top: 3%;
-    border-radius: 4px;
-    border: solid 1px #777778;
-  }
 }
