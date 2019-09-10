@@ -12,7 +12,7 @@ function Login() {
   const isLoggedIn = identity && identity.isLoggedIn;
 
   return (
-    <div className='login-container col-2 col-xs-12 mx-auto float-right'>
+    <div className='login-container col-2 col-xs-12 mx-auto float-left'>
       <span className="login-btn" onClick={() => setDialog(true)}>
         {isLoggedIn ? "LOG OUT" : "LOGIN"}
       </span>
