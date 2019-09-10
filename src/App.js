@@ -59,15 +59,14 @@ function App() {
               <br />
 
               <h2>
-                Schedule a pool match! This is a QA Test with Login.
+                Schedule a pool match!
               </h2>
-
-              <h3>
-                {window.location.hostname}
-              </h3>
             </div>
           </div>
         </div>
+        <span>
+          {window.location.hostname}
+        </span>
       </div>
     </IdentityContextProvider>
   );
