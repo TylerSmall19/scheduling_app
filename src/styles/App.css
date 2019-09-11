@@ -26,18 +26,23 @@
 .container {
   min-height: 650px;
   padding: 2%;
+  padding-top: 73px;
 }
-
+/* 
 .login-container {
   min-width: 120px;
-}
+} */
 
-.login-btn {
+/* .login-btn {
   font-weight: 500;
-}
-
+} */
+/* 
 .login-btn:hover {
   color: #fc744e;
   font-weight: 700;
+  cursor: pointer;
+} */
+
+.navbar-nav {
   cursor: pointer;
 }
