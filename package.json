@@ -7,6 +7,7 @@
     "@reach/router": "^1.2.1",
     "@reach/tabs": "^0.1.6",
     "@reach/visually-hidden": "^0.1.4",
+    "@types/reach__router": "^1.2.4",
     "netlify-cli": "^2.13.1",
     "netlify-lambda": "^1.6.3",
     "react": "^16.8.6",
