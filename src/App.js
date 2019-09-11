@@ -3,38 +3,53 @@ import './styles/App.css';
 import { IdentityContextProvider, useIdentityContext } from 'react-netlify-identity';
 import 'react-netlify-identity-widget/styles.css';
 import { schedulingAPI } from './services/schedulingAPIService';
-import { Router, Link } from "@reach/router"
+import { Router, Link } from '@reach/router'
+import {Container, Col, Navbar, Nav } from 'react-bootstrap';
 
 // Lazy load the module when login is attempted
 const IdentityModal = React.lazy(() => import('react-netlify-identity-widget'));
 
-function Header() {
+const AuthBtn = (props) => {
   const identity = useIdentityContext();
   const [dialog, setDialog] = React.useState(false);
   const isLoggedIn = identity && identity.isLoggedIn;
 
   return (
-    <div className='col-12'>
-      <div className='login-container col-3 col-xs-12'>
-        <span>
-          <Link to='teams/new' className=''>Create A Team</Link>
-        </span>
-      </div>
+    <React.Fragment>
+      <span {...props} onClick={() => setDialog(true)}>
+        {isLoggedIn ? 'LOG OUT' : 'LOGIN'}
+      </span>
 
-      <div className='login-container col-2 col-xs-12'>
-        <span className="login-btn" onClick={() => setDialog(true)}>
-          {isLoggedIn ? "LOG OUT" : "LOGIN"}
-        </span>
-      </div>
-
-      <div>
-        
-      </div>
-
-      <React.Suspense fallback="">
+      <React.Suspense fallback=''>
         <IdentityModal showDialog={dialog} onCloseDialog={() => setDialog(false)} />
       </React.Suspense>
-    </div>
+    </React.Fragment>
+  );
+}
+
+function Header() {
+  return (
+    <React.Fragment>
+      <Navbar 
+        bg='dark' 
+        expand='md' 
+        variant='dark' 
+        fixed='top'
+        collapseOnSelect={true}
+      >
+        <Navbar.Brand as={(props) => <Link {...props} to='/'>Team Scheduling</Link>} />
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='mr-auto'>
+            <Nav.Link as={(props) => <Link {...props} to='/'>Home</Link>} />
+            <Nav.Link as={(props) => <Link {...props} to='teams/new'>Create a Team</Link>} />
+          </Nav>
+          <Nav>
+            <Nav.Link as={AuthBtn} />
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      </React.Fragment>
   )
 }
 
@@ -61,36 +76,38 @@ const TeamsIndex = () => {
   )
 }
 
+const AppHome = () => {
+  return (
+    <React.Fragment>
+      <h1>
+        Scheduling App
+      </h1>
+      <br />
+      <HitAPI />
+      <br /> <br />
+      <h2>
+        <Link to='home'>
+          Schedule a pool match!
+        </Link>
+      </h2>
+    </React.Fragment>
+  );
+}
+
 const AppIndex = () => {
   return(
-    <div className="App">
-      <div className='container'>
-        <div className='row'>
-          <Header />
-          
-          <div className='col-12'>
+    <div className='App'>
+      <Container>
+        <Header />
 
-            <Router>
-              <TeamsIndex path='teams/new' />
-              <NotFound default />
-            </Router>
-
-            {/* <div className='mt-3'>
-              <h1>
-                Scheduling App
-              </h1>
-              <br />
-              <HitAPI />
-              <br /> <br />
-              <h2>
-                <Link to='home'>
-                  Schedule a pool match!
-                </Link>
-              </h2>
-            </div> */}
-          </div>
-        </div>
-      </div>
+        <Col>
+          <Router>
+            <TeamsIndex path='teams/new' />
+            <AppHome path='/' />
+            <NotFound default />
+          </Router>
+        </Col>
+      </Container>
       <span>
         {window.location.hostname}
       </span>
