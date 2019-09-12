@@ -3,7 +3,7 @@ import { Field } from 'formik';
 
 export const FormInput = (props) => { 
   return (
-    <div className='col-sm-4'>
+    <div className='col-xs-8 col-sm-7 col-md-4'>
       <label
         htmlFor={props.id || props.name}
         className='formLabel'
