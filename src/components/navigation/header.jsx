@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useIdentityContext } from 'react-netlify-identity';
 import { schedulingAPI } from '../../services/schedulingAPIService';
 import { Link } from '@reach/router'
-import {Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
 // Lazy load the module when login is attempted
 const IdentityModal = React.lazy(() => import('react-netlify-identity-widget'));
@@ -56,6 +56,7 @@ export const Header = () => {
             <Nav.Link href='#' as={(props) => <Link {...props} to='teams/new'>Create a Team</Link>} />
           </Nav>
           <Nav>
+            <Nav.Link as={() => <HitAPI />}>Test</Nav.Link>
             <Nav.Link href={window.location.pathname} as={AuthBtn} />
           </Nav>
         </Navbar.Collapse>
