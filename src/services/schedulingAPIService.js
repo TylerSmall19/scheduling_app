@@ -1,25 +1,30 @@
+import { IdentityService } from "./identityService";
+
 const root = '/.netlify/functions';
 
 const schedulingAPIRoutes = {
   root,
-  teamSchedule: (teamID) => root + '/schedulingApi?teamID=' + teamID
+  teamSchedule: (teamID) => root + '/schedulingApi?teamID=' + teamID,
+  createNewTeam: root + '/teams'
 }
 
-const authenticatedClient = (identity) => (url, options) =>
-  fetch(url, {
+const _authenticatedClient = (token) => (url, options) => {
+  return fetch(url, {
     credentials: 'include',
+    ...options,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
       ...options.headers,
-      'Authorization': 'Bearer ' + (identity.user && identity.user.token.access_token),
-    },
-    ...options
+      'Authorization': 'Bearer ' + token.access_token,
+    }
   });
+}
 
 export class SchedulingAPI {
-  constructor (identity) {
-    this._client = authenticatedClient(identity);
+  constructor (client) {
+    // Lets our tests inject the client, or make a new one
+    this._client = client || _authenticatedClient(IdentityService.getToken());
   }
 
   async getTeamSchedule(teamID) {
