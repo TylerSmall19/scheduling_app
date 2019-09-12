@@ -1,10 +1,11 @@
 import React from 'react';
+import 'react-netlify-identity-widget/styles.css';
 import './styles/App.css';
 import { IdentityContextProvider, useIdentityContext } from 'react-netlify-identity';
-import 'react-netlify-identity-widget/styles.css';
 import { schedulingAPI } from './services/schedulingAPIService';
 import { Router, Link } from '@reach/router'
 import {Container, Col, Navbar, Nav } from 'react-bootstrap';
+import { NewTeamPage } from './components/pages/NewTeamPage';
 
 // Lazy load the module when login is attempted
 const IdentityModal = React.lazy(() => import('react-netlify-identity-widget'));
@@ -70,12 +71,6 @@ const NotFound = () => (
   <span className='col-2 mx-auto'>Not Found</span>
 )
 
-const TeamsIndex = () => {
-  return (
-    <h1>Create a New Team</h1>
-  )
-}
-
 const AppHome = () => {
   return (
     <React.Fragment>
@@ -102,21 +97,18 @@ const AppIndex = () => {
 
         <Col>
           <Router>
-            <TeamsIndex path='teams/new' />
             <AppHome path='/' />
+            <NewTeamPage path='teams/new' />
             <NotFound default />
           </Router>
         </Col>
       </Container>
-      <span>
-        {window.location.hostname}
-      </span>
     </div>
   );
 }
 
 function App() {
-  const url = 'https://schedule.tylerjsmall.com/';
+  const url = 'https://schedule.tylerjsmall.com';
   return (
     <IdentityContextProvider url={url}>
       <Router>
