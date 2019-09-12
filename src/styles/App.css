@@ -38,6 +38,14 @@
   overflow: hidden;
 }
 
+.callout {
+  border: solid 2px #FA9F42;
+  border-radius: 8px;
+  padding: 2.2%;
+  margin: 3% 0;
+  color: #721817;
+}
+
 .container {
   min-height: 650px;
   padding: 2%;

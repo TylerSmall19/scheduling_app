@@ -7,10 +7,14 @@ export const HomePage = () => {
         Welcome to your schedule's new home
       </h1>
 
-      <h4>
-        <em>This app is very much under creation.</em> Expect bugs and slow UIs for a while. 
-        It'll get better or it won't, but hopefully it's still useful in the early stages
-      </h4>
+      <div className='callout'>
+        <h4>
+          This app is under construction
+        </h4>
+
+        <h4> Expect bugs and possibly poor UX for a while. It'll get better or it won't, but hopefully it's still useful in the early stages
+        </h4>
+      </div>
 
       <br />
       
