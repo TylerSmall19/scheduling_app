@@ -7,8 +7,7 @@ import * as Yup from 'yup';
 
 let initialValues = {
   teamName: '',
-  homeLocation: '',
-  divisionNumber: ''
+  homeLocation: ''
 }
 
 const getInitialValues = () => {
@@ -23,10 +22,7 @@ const validationSchema = Yup
       .required('Required'),
     homeLocation: Yup.string()
       .max(100, 'Too long')
-      .required('Required'),
-    divisionNumber: Yup.string()
-      .notRequired()
-      .max(35, 'Too long')
+      .required('Required')
   })
 
 const Fields = (props) => {
@@ -40,11 +36,6 @@ const Fields = (props) => {
       <FormInput 
         name='homeLocation'
         label='Home Location'
-      />
-
-      <FormInput 
-        name='divisionNumber'
-        label= {() => <span>Divison Number <em>- optional</em></span> }
       />
 
       <div className='col-sm-4 mt-3'>
