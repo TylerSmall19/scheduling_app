@@ -6,6 +6,7 @@ import { schedulingAPI } from './services/schedulingAPIService';
 import { Router, Link } from '@reach/router'
 import {Container, Col, Navbar, Nav } from 'react-bootstrap';
 import { NewTeamPage } from './components/pages/NewTeamPage';
+import { HomePage } from './components/pages/HomePage';
 
 // Lazy load the module when login is attempted
 const IdentityModal = React.lazy(() => import('react-netlify-identity-widget'));
@@ -71,24 +72,6 @@ const NotFound = () => (
   <span className='col-2 mx-auto'>Not Found</span>
 )
 
-const AppHome = () => {
-  return (
-    <React.Fragment>
-      <h1>
-        Scheduling App
-      </h1>
-      <br />
-      <HitAPI />
-      <br /> <br />
-      <h2>
-        <Link to='home'>
-          Schedule a pool match!
-        </Link>
-      </h2>
-    </React.Fragment>
-  );
-}
-
 const AppIndex = () => {
   return(
     <div className='App'>
@@ -97,7 +80,7 @@ const AppIndex = () => {
 
         <Col>
           <Router>
-            <AppHome path='/' />
+            <HomePage path='/' />
             <NewTeamPage path='teams/new' />
             <NotFound default />
           </Router>
