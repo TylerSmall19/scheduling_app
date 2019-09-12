@@ -17,7 +17,7 @@ const authenticatedClient = (identity) => (url, options) =>
     ...options
   });
 
-export class schedulingAPI {
+export class SchedulingAPI {
   constructor (identity) {
     this._client = authenticatedClient(identity);
   }
@@ -29,5 +29,9 @@ export class schedulingAPI {
     .then(response => {
       return response.json()
     })
+  }
+
+  async createNewTeam(values) {
+    console.log('Creating a new team');
   }
 }
