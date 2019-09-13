@@ -4,6 +4,9 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { FormInput } from './FormInput';
 import * as Yup from 'yup';
+import { SchedulingAPI } from '../../services/schedulingAPIService';
+import { navigate } from '@reach/router';
+import { appRoutes } from '../../constants/appRoutes';
 
 let initialValues = {
   teamName: '',
@@ -45,13 +48,29 @@ const Fields = (props) => {
   )
 }
 
-export const TeamSetupForm = (props) => { 
+let _client;
+
+const newSubmissionHandler = async (vals, actions) => {
+  _client = _client || new SchedulingAPI();
+
+  return _client.createNewTeam(vals)
+    .then(async (res) => {
+      await navigate(appRoutes.teamPage(res.id));
+      actions.setSubmitting(false);
+      return;
+    })
+    .catch((e) => {
+      throw Error('Something went wrong: ' + e);
+    })
+}
+
+export const TeamSetupForm = (props) => {
   return (
     <Formik
       validationSchema={validationSchema}
       initialValues={getInitialValues()}
       render={() => <Fields />}
-      onSubmit={(vals) => console.log(vals)}
+      onSubmit={newSubmissionHandler}
     />
   );
 };
