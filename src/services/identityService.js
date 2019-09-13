@@ -1,11 +1,11 @@
-const _gotrueUser = JSON.parse(window.localStorage.getItem('gotrue.user'));
-
 export const IdentityService = {
-  getUser: () => {
-    return _gotrueUser;
+  _rawUser: () => JSON.parse(window.localStorage.getItem('gotrue.user')),
+
+  getUser: function () {
+    return this._rawUser();
   },
 
-  getToken: () => {
-    return _gotrueUser.token;
+  getToken: function () {
+    return this._rawUser().token;
   }
 }
