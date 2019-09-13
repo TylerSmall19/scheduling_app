@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIdentityContext } from 'react-netlify-identity';
-import { schedulingAPI } from '../../services/schedulingAPIService';
+import { SchedulingAPI } from '../../services/schedulingAPIService';
 import { Link } from '@reach/router'
 import { Navbar, Nav } from 'react-bootstrap';
 
@@ -8,10 +8,8 @@ import { Navbar, Nav } from 'react-bootstrap';
 const IdentityModal = React.lazy(() => import('react-netlify-identity-widget'));
 
 const HitAPI = () => {
-  const identity = useIdentityContext();
-
   const onClickHandler = async () => {
-    const res = await new schedulingAPI(identity).getTeamSchedule('1');
+    const res = await new SchedulingAPI().getTeamSchedule('1');
     console.log(res)
   }
 
