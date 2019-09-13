@@ -1,12 +1,5 @@
 import { IdentityService } from "./identityService";
-
-const root = '/.netlify/functions';
-
-const schedulingAPIRoutes = {
-  root,
-  teamSchedule: (teamID) => root + '/schedulingApi?teamID=' + teamID,
-  createNewTeam: root + '/teams'
-}
+import { schedulingAPIRoutes } from "../constants/appRoutes";
 
 const _authenticatedClient = (token) => (url, options) => {
   return fetch(url, {
