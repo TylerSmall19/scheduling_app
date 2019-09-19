@@ -61,7 +61,7 @@ describe('Scheduling API Service', () => {
     it('Calls the client with a proper URL for creating a team', async () => { 
       expect(mockClient).not.toBeCalled();
       await apiToTest.createNewTeam({});
-      expect(mockClient.mock.calls[0][0]).toBe(schedulingAPIRoutes.createNewTeam);
+      expect(mockClient.mock.calls[0][0]).toBe(schedulingAPIRoutes.createNewTeam());
     });
 
     it('Calls the client with a proper "method" for creating a team (post)', async () => { 

@@ -30,7 +30,7 @@ export class SchedulingAPI {
   }
 
   async createNewTeam(values) {
-    return this._client(schedulingAPIRoutes.createNewTeam, {
+    return this._client(schedulingAPIRoutes.createNewTeam(), {
       method: 'POST',
       body: JSON.stringify(values)
     })
