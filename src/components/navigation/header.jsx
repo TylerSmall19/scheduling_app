@@ -9,7 +9,7 @@ const IdentityModal = React.lazy(() => import('react-netlify-identity-widget'));
 
 const HitAPI = () => {
   const onClickHandler = async () => {
-    const res = await new SchedulingAPI().getTeamSchedule('1');
+    const res = await new SchedulingAPI().createNewTeam({foo: 'bar'});
     console.log(res)
   }
 
