@@ -8,5 +8,5 @@ const schedApiBase = '/.netlify/functions';
 export const schedulingAPIRoutes = {
   root: () => schedApiBase,
   teamSchedule: (teamID) => schedApiBase + '/schedulingApi?teamID=' + teamID,
-  createNewTeam: () => schedApiBase + '/teams'
+  createNewTeam: () => schedApiBase + '/createNewTeam'
 }
