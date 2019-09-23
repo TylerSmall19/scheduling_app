@@ -17,8 +17,7 @@
   functions = "functions/"
 
 [context.production]
-  environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_PROD" }
+  environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_PROD", SCHEDULING_API_ROOT = "https://api-scheduling.herokuapp.com" }
 
 [context.qa]
-  environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_QA" }
-  command = 'npm run lambdas:build && npm run build'
+  environment = { API_LOOKUP_KEY = "SCHEDULE_API_KEY_QA", SCHEDULING_API_ROOT = "https://qa-api-scheduling.herokuapp.com/" }
