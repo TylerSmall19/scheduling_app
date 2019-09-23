@@ -1,4 +1,5 @@
 import ConfigManager from './lambdaConfigManager';
+import fetch from 'node-fetch';
 
 // const postData('http://example.com/answer', {answer: 42})
 // .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
@@ -22,6 +23,6 @@ export const communicationClient = (url = '', method = 'GET', bodyData = null) =
 
 export const OutgoingAPIClient = {
   async createNewTeam(values) {
-    return await communicationClient(ConfigManager.externalAPIRoutes.createTeam, 'POST', values);
+    return await communicationClient(ConfigManager.externalAPIRoutes.createTeam(), 'POST', values);
   }
 }
