@@ -6,12 +6,12 @@ exports.handler = async function (event, context, callback) {
   const loggedIn = isLoggedIn(event, context, callback);
 
   if (loggedIn) {
-    return OutgoingAPIClient.createNewTeam(event.body, context.clientContext.sub)
+    return OutgoingAPIClient.createNewTeam(JSON.parse(event.body), context.clientContext.user.sub)
       .then(res => {
-        if (res.status >= 200 && res.status < 300)
+        if (res)
           return successResponse(res);
         else
-          throw new Error(JSON.stringify(res.exception));
+          throw new Error('Response not 200', JSON.stringify(res));
       })
       .catch(ex => {
         console.error(ex);
