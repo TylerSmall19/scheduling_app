@@ -95,7 +95,7 @@ describe('TeamSetupForm', () => {
         if(!vals.pass) 
           throw new Error('test')
         
-        return { id: 3 }
+        return { response: { id: 3 }}
       });
 
       beforeEach(() => { 

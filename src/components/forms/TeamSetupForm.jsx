@@ -55,7 +55,7 @@ const newSubmissionHandler = async (vals, actions) => {
 
   return _client.createNewTeam(vals)
     .then(async (res) => {
-      await navigate(appRoutes.teamPage(res.id));
+      await navigate(appRoutes.teamPage(res.response.id));
       actions.setSubmitting(false);
       return;
     })
