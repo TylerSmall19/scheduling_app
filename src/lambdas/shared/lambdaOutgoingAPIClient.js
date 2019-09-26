@@ -18,7 +18,9 @@ export const communicationClient = (url = '', method = 'GET', bodyData = null) =
 }
 
 export const OutgoingAPIClient = {
-  async createNewTeam(values) {
+  async createNewTeam(values, captainId) {
+    values.captainId = captainId;
+
     return await communicationClient(ConfigManager.externalAPIRoutes.createTeam(), 'POST', values);
   }
 }
