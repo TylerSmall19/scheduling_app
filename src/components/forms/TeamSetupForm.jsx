@@ -55,6 +55,9 @@ const newSubmissionHandler = async (vals, actions) => {
 
   return _client.createNewTeam(vals)
     .then(async (res) => {
+      if (!res.response)
+        throw Error('Response is not present');
+
       await navigate(appRoutes.teamPage(res.response.id));
       actions.setSubmitting(false);
       return;
