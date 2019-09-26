@@ -1,4 +1,5 @@
-import { communicationClient as clientToTest } from "../shared/lambdaOutgoingAPIClient";
+import { communicationClient as clientToTest } from '../shared/lambdaOutgoingAPIClient';
+import fetch from 'node-fetch';
 
 describe('Communication Client', () => {
   let mockJsonFunction;
@@ -6,16 +7,16 @@ describe('Communication Client', () => {
 
   beforeEach(() => {
     mockJsonFunction = jest.fn(() => fakePayload);
-    spyOn(global, 'fetch').and.callFake(async () => ({ json: mockJsonFunction }));
+    spyOn(fetch, 'default').and.callFake(async () => ({ json: mockJsonFunction }));
   });
 
   it('Exists', () => { 
     expect(clientToTest).toBeDefined()
   });
 
-  it('Calls the underlying http client (fetch)', () => {    
+  it('Calls the underlying http client (fetch)', async () => {    
     expect(fetch).not.toBeCalled();
-    clientToTest();
+    await clientToTest();
     expect(fetch).toBeCalled();
   });
 
@@ -24,7 +25,7 @@ describe('Communication Client', () => {
     expect(fetch).toBeCalledWith(
       expect.anything(), 
       expect.objectContaining({ 
-        headers: expect.objectContaining({ "api_key": expect.anything()})
+        headers: expect.objectContaining({ 'api_key': expect.anything()})
       })
     );
   });
@@ -44,7 +45,7 @@ describe('Communication Client', () => {
     const body = { foo: 'bar' };
 
     expect(fetch).not.toBeCalled();
-    clientToTest(undefined, undefined, body);
+    clientToTest(undefined, 'POST', body);
     expect(fetch).toBeCalledWith(
       expect.anything(), 
       expect.objectContaining({ 
