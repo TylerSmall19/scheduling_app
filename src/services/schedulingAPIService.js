@@ -38,4 +38,13 @@ export class SchedulingAPI {
       return response.json()
     })
   }
+
+  async getTeamByID(id) {
+    return this._client(schedulingAPIRoutes.getTeamByID(id), {
+      method: 'GET'
+    })
+    .then(response => {
+      return response.json()
+    })
+  }
 }

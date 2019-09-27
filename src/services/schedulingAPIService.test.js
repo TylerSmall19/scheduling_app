@@ -87,4 +87,49 @@ describe('Scheduling API Service', () => {
       return expect(apiToTest.createNewTeam({fail: true})).rejects.toEqual(expectedError);
     });
   });
+
+  describe('Get Team by ID', () => {
+    let apiToTest;
+    let mockClient;
+    let expectedMockJson = { test: 'passes' };
+    const expectedError = new Error('fail requested');
+
+    beforeEach(() => { 
+      mockClient = jest.fn().mockImplementation(async (url) => {
+        if (url && url.includes('fail'))
+          throw expectedError;
+        else
+          return { json: async () => expectedMockJson};
+       });
+      apiToTest = new SchedulingAPI(mockClient)
+    });
+
+    it('Calls the client', async () => { 
+      expect(mockClient).not.toBeCalled();
+      await apiToTest.getTeamByID(1);
+      expect(mockClient).toBeCalled();
+    });
+
+    it('Calls the client with a proper URL for getting a team', async () => { 
+      expect(mockClient).not.toBeCalled();
+      await apiToTest.getTeamByID(1);
+      expect(mockClient.mock.calls[0][0]).toBe(schedulingAPIRoutes.getTeamByID(1));
+    });
+
+    it('Calls the client with a proper "method" for finding a team by ID (get)', async () => { 
+      expect(mockClient).not.toBeCalled();
+      await apiToTest.getTeamByID(1);
+      expect(mockClient.mock.calls[0][1].method).toBe('GET');
+    });
+
+    it('Resolves with .json() when successful', async () => {
+      expect.assertions(1);
+      return expect(apiToTest.getTeamByID(1)).resolves.toEqual(expectedMockJson);
+    });
+
+    it('Fails when unsuccessful', async () => {
+      expect.assertions(1);
+      return expect(apiToTest.getTeamByID('fail')).rejects.toEqual(expectedError);
+    });
+  });
 })
