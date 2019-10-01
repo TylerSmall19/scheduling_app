@@ -22,5 +22,9 @@ export const OutgoingAPIClient = {
     values.captainId = captainId;
 
     return await communicationClient(ConfigManager.externalAPIRoutes.createTeam(), 'POST', values);
+  },
+
+  async getTeamByID(teamID) {
+    
   }
 }
